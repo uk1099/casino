@@ -1,0 +1,119 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void rules();
+void line(int n);
+int n;
+int amt;
+int bet_amt;
+char choice;
+string name;
+
+
+int main()
+{
+   // clrscr();
+     
+    int dice;
+    int guess;
+    srand (time(0));
+    line(70);
+    cout<<"\n\t\t\t\t************\n\t\t\t\t   CASINO\n\t\t\t\t************\n\n";
+    line(70);
+
+   cout<<"Enter Player Name:";
+    cout<<endl;
+    cin>>name;
+   
+   cout<<"enter betting amount";
+   cin>>amt;
+
+   rules();
+
+   do
+    {
+   do  //checks betting amount
+   {
+    //system("cls");
+    cout<<"enter betting amount:";
+    cin>>bet_amt;
+    if (bet_amt>amt)
+    {
+        cout<<"not enough funds, re-enter data\n";
+
+    }
+    
+    } while (bet_amt<amt);
+
+    do  // guiesssing number generator
+    {
+        cout<<"guess number between 1-10\n";
+        cin>>guess;
+        if (guess<0||guess>11)
+        {
+            cout<<"You eneterd an invalid number\n enter number between 1-10\n reenter data\n";
+            cin>>guess;
+        }
+        
+    } while (guess<0||guess>11);
+   
+
+
+    dice= rand()%10+1;
+    
+    cout<<"winning number is"<<dice;
+    
+    if (dice==guess)
+    {
+        cout<<"you win, your winning amount is "<<bet_amt*10;
+        amt+=(bet_amt*10);
+        cout<<"you lost the game, your updated balance is "<<amt;
+    }
+
+    else {
+        amt-=bet_amt;
+        cout<<"you lost the game, your updated balance is "<<amt;
+    }
+    
+   
+    if (amt==0)
+    {
+        cout<<"you have no money to play";
+    }
+
+    cout<<"Do you want to play again??(y/n)";
+    cin>>choice;
+    
+    }while (choice=y||choice=Y);
+
+
+    cout<<\n\n\n;
+    line(40,=);
+    cout<<"Thanks for playing, Your total amount is "<<amt<<"\n\n";
+ 
+
+
+
+    return 0;
+}
+
+
+
+void line( int n)
+{
+    for(int i=1;n>i;i++)
+    cout<<"-";
+    cout<<"\n\n\t\t\t";
+
+
+    
+}               
+
+void rules()
+{
+    cout<<"WELCOME TO THE CASINO NUMBER GUESSING GAME\n";
+    cout<<"\n\t\tRULES\n";
+    cout<<"choose no between 1-10";
+    cout<<"\nIf you win, you'll get 10x of your betting amount";
+    cout<<"\nIf you lose, you will lose your betting amount\n";
+}
